@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `usuario_perfil`;
 CREATE TABLE `usuario_perfil` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `usuario_id` int(10) unsigned NOT NULL,
-  `usuario_caracteristica_id` int(10) unsigned NOT NULL,
+  `usuario_perfil_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

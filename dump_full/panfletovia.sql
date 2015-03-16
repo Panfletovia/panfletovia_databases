@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : localhost
 Source Server Version : 50621
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : panfletovia
 
 Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-03-09 12:50:34
+Date: 2015-03-16 12:47:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,6 +44,27 @@ CREATE TABLE `campanha_panfleto` (
 
 -- ----------------------------
 -- Records of campanha_panfleto
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `campanha_panfletos_regras`
+-- ----------------------------
+DROP TABLE IF EXISTS `campanha_panfletos_regras`;
+CREATE TABLE `campanha_panfletos_regras` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `campanha_id` int(10) unsigned NOT NULL,
+  `panfleto_id` int(10) unsigned NOT NULL,
+  `sexo_alvo` varchar(1) NOT NULL COMMENT 'M (masculino), F(feminino), S(sem restricao)',
+  `idade_alvo_min` int(10) unsigned NOT NULL,
+  `idade_alvo_max` int(10) unsigned NOT NULL,
+  `dias_da_semana_distribuicao` varchar(7) NOT NULL COMMENT '''0'',''1'',''2'',''3'',''4'',''5'',''6''',
+  `horario_distribuicao_ini` datetime NOT NULL,
+  `horario_distribuicao_fim` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Regras de distribuição dos panfletos';
+
+-- ----------------------------
+-- Records of campanha_panfletos_regras
 -- ----------------------------
 
 -- ----------------------------
@@ -82,27 +103,6 @@ CREATE TABLE `campanha_panfleto_recursos` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `campanha_panfletos_regras`
--- ----------------------------
-DROP TABLE IF EXISTS `campanha_panfletos_regras`;
-CREATE TABLE `campanha_panfletos_regras` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `campanha_id` int(10) unsigned NOT NULL,
-  `panfleto_id` int(10) unsigned NOT NULL,
-  `sexo_alvo` varchar(1) NOT NULL COMMENT 'M (masculino), F(feminino), S(sem restricao)',
-  `idade_alvo_min` int(10) unsigned NOT NULL,
-  `idade_alvo_max` int(10) unsigned NOT NULL,
-  `dias_da_semana_distribuicao` varchar(7) NOT NULL COMMENT '''0'',''1'',''2'',''3'',''4'',''5'',''6''',
-  `horario_distribuicao_ini` datetime NOT NULL,
-  `horario_distribuicao_fim` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Regras de distribuição dos panfletos';
-
--- ----------------------------
--- Records of campanha_panfletos_regras
--- ----------------------------
-
--- ----------------------------
 -- Table structure for `email`
 -- ----------------------------
 DROP TABLE IF EXISTS `email`;
@@ -132,7 +132,7 @@ CREATE TABLE `entidade` (
   `cpf_cnpj` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `pessoa` enum('FISICA','JURIDICA') COLLATE utf8_unicode_ci NOT NULL,
   `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `fantasia` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `fantasia` varchar(30) COLLATE utf8_unicode_ci DEFAULT '',
   `data_nascimento` date NOT NULL DEFAULT '2000-01-01',
   `email` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -150,11 +150,12 @@ CREATE TABLE `entidade` (
   `senha` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `sexo` varchar(1) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
 
 -- ----------------------------
 -- Records of entidade
 -- ----------------------------
+INSERT INTO `entidade` VALUES ('1', '021.960.140-28', 'FISICA', 'Eduardo Masami Kanno', 'Eduardo', '1988-04-07', null, null, null, null, null, null, null, null, null, '1', 'USUARIO', '2015-03-17 16:20:00', 'eduardokanno@gmail.com', '8ec816b415c5f018935c93fb0bef13b6', 'M');
 
 -- ----------------------------
 -- Table structure for `panfleto`
@@ -207,11 +208,40 @@ CREATE TABLE `perfil` (
   `descricao` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `codigo` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of perfil
 -- ----------------------------
+INSERT INTO `perfil` VALUES ('1', null, 'alimentação');
+INSERT INTO `perfil` VALUES ('2', null, 'supermercados');
+INSERT INTO `perfil` VALUES ('3', null, 'padarias / bistros / cafés');
+INSERT INTO `perfil` VALUES ('4', null, 'moda / fantasias');
+INSERT INTO `perfil` VALUES ('5', 'Academia / Pilates / Clínicas', 'saúde');
+INSERT INTO `perfil` VALUES ('6', 'Passeios / Parques', 'lazer');
+INSERT INTO `perfil` VALUES ('7', null, 'festas / eventos / shows / dan');
+INSERT INTO `perfil` VALUES ('8', null, 'bares');
+INSERT INTO `perfil` VALUES ('9', 'Livrarias / Cinemas / Teatro', 'cultural');
+INSERT INTO `perfil` VALUES ('10', 'Pontos Turísticos / Hístóricos da Cidade', 'histórico');
+INSERT INTO `perfil` VALUES ('11', '\"Pague hoje seu IPVA com 30% de desconto\"', 'Informativo');
+INSERT INTO `perfil` VALUES ('12', null, 'eletroeletrônicos');
+INSERT INTO `perfil` VALUES ('13', null, 'esportes');
+INSERT INTO `perfil` VALUES ('14', null, 'eróticos');
+INSERT INTO `perfil` VALUES ('15', null, 'casa e construção');
+INSERT INTO `perfil` VALUES ('16', 'Spa / Salão de Beleza', 'beleza');
+INSERT INTO `perfil` VALUES ('17', null, 'farmácias / drogarias');
+INSERT INTO `perfil` VALUES ('18', null, 'pousadas / hotéis / Motéis');
+INSERT INTO `perfil` VALUES ('19', 'Escolas de Idioma / Cursos de Extensão', 'acadêmico');
+INSERT INTO `perfil` VALUES ('20', null, 'imobiliárias');
+INSERT INTO `perfil` VALUES ('21', null, 'petShops');
+INSERT INTO `perfil` VALUES ('22', null, 'camping / pesca');
+INSERT INTO `perfil` VALUES ('23', null, 'concessionárias');
+INSERT INTO `perfil` VALUES ('24', null, 'bancos');
+INSERT INTO `perfil` VALUES ('25', null, 'brinquedos');
+INSERT INTO `perfil` VALUES ('26', 'Instrumentos / CD\'s / Aulas de Instrumentos / Danças', 'musical');
+INSERT INTO `perfil` VALUES ('27', null, 'perfumaria / cosméticos');
+INSERT INTO `perfil` VALUES ('28', null, 'empregos / concursos');
+INSERT INTO `perfil` VALUES ('29', 'Manutenção / Encanador / Pedreiro / Detetização', 'serviços');
 
 -- ----------------------------
 -- Table structure for `sub_perfil`
@@ -235,10 +265,45 @@ DROP TABLE IF EXISTS `usuario_perfil`;
 CREATE TABLE `usuario_perfil` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `usuario_id` int(10) unsigned NOT NULL,
-  `usuario_caracteristica_id` int(10) unsigned NOT NULL,
+  `usuario_perfil_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of usuario_perfil
 -- ----------------------------
+INSERT INTO `usuario_perfil` VALUES ('1', '1', '1');
+INSERT INTO `usuario_perfil` VALUES ('2', '1', '2');
+INSERT INTO `usuario_perfil` VALUES ('3', '1', '3');
+INSERT INTO `usuario_perfil` VALUES ('4', '0', '4');
+INSERT INTO `usuario_perfil` VALUES ('5', '0', '5');
+INSERT INTO `usuario_perfil` VALUES ('6', '0', '6');
+INSERT INTO `usuario_perfil` VALUES ('7', '0', '7');
+INSERT INTO `usuario_perfil` VALUES ('8', '0', '8');
+INSERT INTO `usuario_perfil` VALUES ('9', '0', '9');
+INSERT INTO `usuario_perfil` VALUES ('10', '0', '10');
+INSERT INTO `usuario_perfil` VALUES ('11', '0', '11');
+INSERT INTO `usuario_perfil` VALUES ('12', '0', '12');
+INSERT INTO `usuario_perfil` VALUES ('13', '0', '13');
+INSERT INTO `usuario_perfil` VALUES ('14', '0', '14');
+INSERT INTO `usuario_perfil` VALUES ('15', '0', '15');
+INSERT INTO `usuario_perfil` VALUES ('16', '0', '16');
+INSERT INTO `usuario_perfil` VALUES ('17', '0', '17');
+INSERT INTO `usuario_perfil` VALUES ('18', '0', '18');
+INSERT INTO `usuario_perfil` VALUES ('19', '0', '19');
+INSERT INTO `usuario_perfil` VALUES ('20', '0', '20');
+INSERT INTO `usuario_perfil` VALUES ('21', '0', '21');
+INSERT INTO `usuario_perfil` VALUES ('22', '0', '22');
+INSERT INTO `usuario_perfil` VALUES ('23', '0', '23');
+INSERT INTO `usuario_perfil` VALUES ('24', '0', '24');
+INSERT INTO `usuario_perfil` VALUES ('25', '0', '25');
+INSERT INTO `usuario_perfil` VALUES ('26', '0', '26');
+INSERT INTO `usuario_perfil` VALUES ('27', '0', '27');
+INSERT INTO `usuario_perfil` VALUES ('28', '0', '28');
+INSERT INTO `usuario_perfil` VALUES ('29', '0', '29');
+
+-- ----------------------------
+-- View structure for `cliente`
+-- ----------------------------
+DROP VIEW IF EXISTS `cliente`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cliente` AS select `entidade`.`id` AS `id`,`entidade`.`cpf_cnpj` AS `cpf_cnpj`,`entidade`.`pessoa` AS `pessoa`,`entidade`.`nome` AS `nome`,`entidade`.`fantasia` AS `fantasia`,`entidade`.`data_nascimento` AS `data_nascimento`,`entidade`.`email` AS `email`,`entidade`.`telefone` AS `telefone`,`entidade`.`cep` AS `cep`,`entidade`.`logradouro` AS `logradouro`,`entidade`.`numero` AS `numero`,`entidade`.`compl` AS `compl`,`entidade`.`cidade` AS `cidade`,`entidade`.`bairro` AS `bairro`,`entidade`.`uf` AS `uf`,`entidade`.`ativo` AS `ativo`,`entidade`.`tipo` AS `tipo`,`entidade`.`criado_em` AS `criado_em`,`entidade`.`login` AS `login`,`entidade`.`senha` AS `senha`,`entidade`.`sexo` AS `sexo` from `entidade` where (`entidade`.`tipo` = 'USUARIO');
