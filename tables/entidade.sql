@@ -24,7 +24,7 @@ CREATE TABLE `entidade` (
   `cpf_cnpj` varchar(25) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `pessoa` enum('FISICA','JURIDICA') COLLATE utf8_unicode_ci NOT NULL,
   `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `fantasia` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `fantasia` varchar(30) COLLATE utf8_unicode_ci NULL DEFAULT '',
   `data_nascimento` date NOT NULL DEFAULT '2000-01-01',
   `email` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
