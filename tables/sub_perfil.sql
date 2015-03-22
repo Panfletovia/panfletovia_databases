@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : localhost
 Source Server Version : 50621
-Source Host           : 127.0.0.1:3306
+Source Host           : localhost:3306
 Source Database       : panfletovia
 
 Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-03-09 12:54:32
+Date: 2015-03-21 20:06:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,8 +24,4 @@ CREATE TABLE `sub_perfil` (
   `perfil_id` int(10) unsigned NOT NULL,
   `codigo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of sub_perfil
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;

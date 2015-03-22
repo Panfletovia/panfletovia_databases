@@ -26,7 +26,6 @@ CREATE TABLE `entidade` (
   `nome` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `fantasia` varchar(30) COLLATE utf8_unicode_ci NULL DEFAULT '',
   `data_nascimento` date NOT NULL DEFAULT '2000-01-01',
-  `email` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cep` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `logradouro` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
