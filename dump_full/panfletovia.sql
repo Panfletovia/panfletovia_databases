@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-03-22 19:11:49
+Date: 2015-03-27 15:00:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -193,7 +193,7 @@ CREATE TABLE `entidade` (
   `senha` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `sexo` varchar(1) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
 
 -- ----------------------------
 -- Records of entidade
