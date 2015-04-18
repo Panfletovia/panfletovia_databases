@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 50621
 Source Host           : localhost:3306
-Source Database       : panfletovia
+Source Database       : panfletovia_tests
 
 Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-04-18 14:19:45
+Date: 2015-04-18 14:19:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -111,40 +111,11 @@ CREATE TABLE `cliente_perfil` (
   `cliente_id` int(10) unsigned NOT NULL,
   `perfil_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of cliente_perfil
 -- ----------------------------
-INSERT INTO `cliente_perfil` VALUES ('1', '1', '1');
-INSERT INTO `cliente_perfil` VALUES ('2', '1', '2');
-INSERT INTO `cliente_perfil` VALUES ('3', '1', '3');
-INSERT INTO `cliente_perfil` VALUES ('4', '0', '4');
-INSERT INTO `cliente_perfil` VALUES ('5', '0', '5');
-INSERT INTO `cliente_perfil` VALUES ('6', '0', '6');
-INSERT INTO `cliente_perfil` VALUES ('7', '0', '7');
-INSERT INTO `cliente_perfil` VALUES ('8', '0', '8');
-INSERT INTO `cliente_perfil` VALUES ('9', '0', '9');
-INSERT INTO `cliente_perfil` VALUES ('10', '0', '10');
-INSERT INTO `cliente_perfil` VALUES ('11', '0', '11');
-INSERT INTO `cliente_perfil` VALUES ('12', '0', '12');
-INSERT INTO `cliente_perfil` VALUES ('13', '0', '13');
-INSERT INTO `cliente_perfil` VALUES ('14', '0', '14');
-INSERT INTO `cliente_perfil` VALUES ('15', '0', '15');
-INSERT INTO `cliente_perfil` VALUES ('16', '0', '16');
-INSERT INTO `cliente_perfil` VALUES ('17', '0', '17');
-INSERT INTO `cliente_perfil` VALUES ('18', '0', '18');
-INSERT INTO `cliente_perfil` VALUES ('19', '0', '19');
-INSERT INTO `cliente_perfil` VALUES ('20', '0', '20');
-INSERT INTO `cliente_perfil` VALUES ('21', '0', '21');
-INSERT INTO `cliente_perfil` VALUES ('22', '0', '22');
-INSERT INTO `cliente_perfil` VALUES ('23', '0', '23');
-INSERT INTO `cliente_perfil` VALUES ('24', '0', '24');
-INSERT INTO `cliente_perfil` VALUES ('25', '0', '25');
-INSERT INTO `cliente_perfil` VALUES ('26', '0', '26');
-INSERT INTO `cliente_perfil` VALUES ('27', '0', '27');
-INSERT INTO `cliente_perfil` VALUES ('28', '0', '28');
-INSERT INTO `cliente_perfil` VALUES ('29', '0', '29');
 
 -- ----------------------------
 -- Table structure for `email`
@@ -195,15 +166,12 @@ CREATE TABLE `entidade` (
   `plataforma` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `versao` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
 
 -- ----------------------------
 -- Records of entidade
 -- ----------------------------
-INSERT INTO `entidade` VALUES ('1', null, null, null, null, null, null, null, null, null, null, null, null, null, '1', 'CLIENTE', '2015-04-11 15:58:00', 'teste@teste.com.br', 'a31f6c05f86ca9c58a6af0f81b6ad2ee', null, null, null);
-INSERT INTO `entidade` VALUES ('2', null, null, null, null, null, null, null, null, null, null, null, null, null, '1', 'CLIENTE', '2015-04-11 18:16:49', 'eduardokanno@gmail.com', 'a31f6c05f86ca9c58a6af0f81b6ad2ee', null, null, null);
-INSERT INTO `entidade` VALUES ('3', null, null, 'dsdsadsadsadsasad', null, null, null, null, null, null, null, null, null, null, '1', 'CLIENTE', '2015-04-11 18:17:32', 'eduardokanno@gmail.com', 'a31f6c05f86ca9c58a6af0f81b6ad2ee', null, null, null);
-INSERT INTO `entidade` VALUES ('7', null, null, null, null, null, null, null, null, null, null, null, null, null, '1', 'CLIENTE', '2015-04-11 18:20:21', 'eduardokanno@gmail.com', 'a31f6c05f86ca9c58a6af0f81b6ad2ee', null, 'Android', '4.5');
+INSERT INTO `entidade` VALUES ('1', null, null, null, null, null, null, null, null, null, null, null, null, null, '1', 'CLIENTE', '2015-04-18 12:20:03', 'cliente5767@panfletovia.com.br', 'f76b5dc89a10e975f3a28dc44b201c14', null, null, null);
 
 -- ----------------------------
 -- Table structure for `panfleto`
@@ -332,4 +300,4 @@ INSERT INTO `sub_perfil` VALUES ('23', '29', 'Detetização');
 -- View structure for `cliente`
 -- ----------------------------
 DROP VIEW IF EXISTS `cliente`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cliente` AS select `entidade`.`id` AS `id`,`entidade`.`cpf_cnpj` AS `cpf_cnpj`,`entidade`.`pessoa` AS `pessoa`,`entidade`.`nome` AS `nome`,`entidade`.`fantasia` AS `fantasia`,`entidade`.`data_nascimento` AS `data_nascimento`,`entidade`.`telefone` AS `telefone`,`entidade`.`cep` AS `cep`,`entidade`.`logradouro` AS `logradouro`,`entidade`.`numero` AS `numero`,`entidade`.`compl` AS `compl`,`entidade`.`cidade` AS `cidade`,`entidade`.`bairro` AS `bairro`,`entidade`.`uf` AS `uf`,`entidade`.`ativo` AS `ativo`,`entidade`.`tipo` AS `tipo`,`entidade`.`criado_em` AS `criado_em`,`entidade`.`login` AS `login`,`entidade`.`senha` AS `senha`,`entidade`.`sexo` AS `sexo`,`entidade`.`plataforma` AS `plataforma`,`entidade`.`versao` AS `versao` from `entidade` where (`entidade`.`tipo` = 'CLIENTE');
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cliente` AS select `entidade`.`id` AS `id`,`entidade`.`cpf_cnpj` AS `cpf_cnpj`,`entidade`.`pessoa` AS `pessoa`,`entidade`.`nome` AS `nome`,`entidade`.`fantasia` AS `fantasia`,`entidade`.`data_nascimento` AS `data_nascimento`,`entidade`.`telefone` AS `telefone`,`entidade`.`cep` AS `cep`,`entidade`.`logradouro` AS `logradouro`,`entidade`.`numero` AS `numero`,`entidade`.`compl` AS `compl`,`entidade`.`cidade` AS `cidade`,`entidade`.`bairro` AS `bairro`,`entidade`.`uf` AS `uf`,`entidade`.`ativo` AS `ativo`,`entidade`.`tipo` AS `tipo`,`entidade`.`criado_em` AS `criado_em`,`entidade`.`login` AS `login`,`entidade`.`senha` AS `senha`,`entidade`.`sexo` AS `sexo` from `entidade` where (`entidade`.`tipo` = 'CLIENTE');
