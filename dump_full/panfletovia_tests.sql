@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-04-18 14:19:53
+Date: 2015-05-08 11:57:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -165,13 +165,14 @@ CREATE TABLE `entidade` (
   `sexo` varchar(1) CHARACTER SET utf8 DEFAULT NULL,
   `plataforma` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `versao` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `entidade_login` (`login`) USING HASH
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1;
 
 -- ----------------------------
 -- Records of entidade
 -- ----------------------------
-INSERT INTO `entidade` VALUES ('1', null, null, null, null, null, null, null, null, null, null, null, null, null, '1', 'CLIENTE', '2015-04-18 12:20:03', 'cliente5767@panfletovia.com.br', 'f76b5dc89a10e975f3a28dc44b201c14', null, null, null);
+INSERT INTO `entidade` VALUES ('1', '102.773.309-39', 'FISICA', 'cliente 5084', 'Fantasia cliente 5084', '2014-10-08', '(51)4127-8384', '83110-914', 'Rua logradouro', '6070', null, 'Novo Hamburgo', 'Centro', 'RS', '1', 'CLIENTE', '2015-05-05 19:41:49', 'cliente5084@panfletovia.com.br', 'f76b5dc89a10e975f3a28dc44b201c14', 'M', null, null);
 
 -- ----------------------------
 -- Table structure for `panfleto`

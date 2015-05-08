@@ -1,9 +1,5 @@
-
 SET FOREIGN_KEY_CHECKS=0;
 
--- ----------------------------
--- Table structure for `entidade`
--- ----------------------------
 DROP TABLE IF EXISTS `entidade`;
 CREATE TABLE `entidade` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -28,9 +24,9 @@ CREATE TABLE `entidade` (
   `sexo` varchar(1) CHARACTER SET utf8 DEFAULT NULL,
   `plataforma` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `versao` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `entidade_login` (`login`) USING HASH
 ) 
-
 ENGINE=InnoDB 
 DEFAULT CHARSET=utf8 
 COLLATE=utf8_unicode_ci 
